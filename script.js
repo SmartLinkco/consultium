@@ -5,6 +5,7 @@ $(document).ready(function() {
     function openModal(modalId) {
         currentModal = $(modalId);
         currentModal.fadeIn(300);
+        currentModal.css('z-index', '2000');
         $('body').addClass('modal-open');
         
         // Reset scroll position of modal content
@@ -13,7 +14,10 @@ $(document).ready(function() {
 
     function closeModal() {
         if (currentModal) {
-            currentModal.fadeOut(300);
+            currentModal.fadeOut(300, function() {
+                // Reset z-index after animation
+                $(this).css('z-index', '');
+            });
             $('body').removeClass('modal-open');
             currentModal = null;
         }
@@ -30,9 +34,27 @@ $(document).ready(function() {
     $('.enquire-btn').click(function(e) {
         e.preventDefault();
         const package = $(this).data('package');
-        $('#selectedPackage').val(package);
-        closeModal();
-        openModal('#enquiryModal');
+        
+        // Define redirect URLs based on package type
+        const redirectUrls = {
+            'basic': '',
+            'premium': '',
+            'consultation-single': '',
+            'consultation-package': '',
+            'process-standard': '',
+            'process-premium': '',
+            'new-license': '',
+            'renewal': '',
+            'consultation': ''
+        };
+        
+        // Redirect to the appropriate URL
+        const redirectUrl = redirectUrls[package];
+        if (redirectUrl !== undefined) {
+            window.location.href = redirectUrl;
+        } else {
+            console.error('No redirect URL defined for package:', package);
+        }
     });
 
     // Close Modal Handlers
@@ -140,29 +162,24 @@ $(document).ready(function() {
     });
 
     // Theme toggling functionality
-    function initThemeToggle() {
-        const themeToggle = document.getElementById('themeToggle');
-        const icon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference or default to 'light'
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(icon, savedTheme);
+    const themeToggle = document.getElementById('themeToggle');
+    const icon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or default to 'light'
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(icon, savedTheme);
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(icon, newTheme);
-        });
-    }
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(icon, newTheme);
+    });
 
     function updateThemeIcon(icon, theme) {
         icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
-
-    // Call this function when the document is ready
-    document.addEventListener('DOMContentLoaded', initThemeToggle);
 });
