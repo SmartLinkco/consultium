@@ -5,13 +5,16 @@ $(document).ready(function() {
     function openModal(modalId) {
         currentModal = $(modalId);
         currentModal.fadeIn(300);
-        $('body').css('overflow', 'hidden');
+        $('body').addClass('modal-open');
+        
+        // Reset scroll position of modal content
+        $(modalId + ' .modal-content').scrollTop(0);
     }
 
     function closeModal() {
         if (currentModal) {
             currentModal.fadeOut(300);
-            $('body').css('overflow', 'auto');
+            $('body').removeClass('modal-open');
             currentModal = null;
         }
     }
@@ -109,5 +112,17 @@ $(document).ready(function() {
         } else {
             $('.navbar').removeClass('scrolled');
         }
+    });
+
+    // Add touch event handling for iOS
+    $(document).on('touchmove', '.modal', function(e) {
+        if (!$(e.target).closest('.modal-content').length) {
+            e.preventDefault();
+        }
+    });
+
+    // Prevent modal content scroll from propagating to body
+    $('.modal-content').on('touchstart touchmove', function(e) {
+        e.stopPropagation();
     });
 });
