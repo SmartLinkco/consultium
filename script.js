@@ -125,4 +125,17 @@ $(document).ready(function() {
     $('.modal-content').on('touchstart touchmove', function(e) {
         e.stopPropagation();
     });
+
+    // Add this to your existing JavaScript
+    document.getElementById('getStartedBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('getStartedModal').style.display = 'block';
+    });
+
+    // Make sure your modal close functionality handles the new modal
+    document.querySelectorAll('.close-modal').forEach(button => {
+        button.addEventListener('click', function() {
+            this.closest('.modal').style.display = 'none';
+        });
+    });
 });

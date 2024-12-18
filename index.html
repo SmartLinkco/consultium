@@ -29,10 +29,11 @@
 
     <!-- Hero Section -->
     <header id="home" class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Streamline Your Business Licensing Process</h1>
             <p>Your trusted partner in navigating business licensing and compliance in Ghana and across Africa</p>
-            <a href="#get-started" class="cta-button">Start Your Journey</a>
+            <a href="#" class="cta-button" id="getStartedBtn">Start Your Journey</a>
         </div>
     </header>
 
@@ -46,15 +47,17 @@
                 <p>Streamlined application process for various business licenses</p>
                 <button class="learn-more-btn">Learn More</button>
             </div>
-            <div class="service-card">
+            <div class="service-card" data-service="consultation">
                 <i class="fas fa-comments"></i>
                 <h3>Expert Consultation</h3>
                 <p>Professional guidance on compliance and regulations</p>
+                <button class="learn-more-btn">Learn More</button>
             </div>
-            <div class="service-card">
+            <div class="service-card" data-service="process">
                 <i class="fas fa-tasks"></i>
                 <h3>Process Management</h3>
                 <p>End-to-end handling of licensing procedures</p>
+                <button class="learn-more-btn">Learn More</button>
             </div>
         </div>
     </section>
@@ -83,6 +86,66 @@
                         <h4>Premium Package</h4>
                         <p>Starting from $XXX</p>
                         <button class="enquire-btn" data-package="premium">Enquire Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this before the Enquiry Form Popup -->
+    <div id="consultationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Expert Consultation Services</h2>
+            <div class="service-details">
+                <h3>Our Consultation Services Include:</h3>
+                <ul>
+                    <li>Regulatory Compliance Assessment</li>
+                    <li>Business Strategy Planning</li>
+                    <li>Risk Analysis</li>
+                    <li>Industry-Specific Guidance</li>
+                    <li>Ongoing Support</li>
+                </ul>
+                <div class="pricing-tiers">
+                    <div class="tier">
+                        <h4>Single Session</h4>
+                        <p>Starting from $XXX</p>
+                        <button class="enquire-btn" data-package="consultation-single">Enquire Now</button>
+                    </div>
+                    <div class="tier">
+                        <h4>Consultation Package</h4>
+                        <p>Starting from $XXX</p>
+                        <button class="enquire-btn" data-package="consultation-package">Enquire Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this before the Enquiry Form Popup -->
+    <div id="processModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Process Management Services</h2>
+            <div class="service-details">
+                <h3>Our Process Management Services Include:</h3>
+                <ul>
+                    <li>Complete Application Handling</li>
+                    <li>Document Collection & Organization</li>
+                    <li>Progress Monitoring & Reporting</li>
+                    <li>Stakeholder Communication</li>
+                    <li>Timeline Management</li>
+                </ul>
+                <div class="pricing-tiers">
+                    <div class="tier">
+                        <h4>Standard Management</h4>
+                        <p>Starting from $XXX</p>
+                        <button class="enquire-btn" data-package="process-standard">Enquire Now</button>
+                    </div>
+                    <div class="tier">
+                        <h4>Premium Management</h4>
+                        <p>Starting from $XXX</p>
+                        <button class="enquire-btn" data-package="process-premium">Enquire Now</button>
                     </div>
                 </div>
             </div>
@@ -154,7 +217,8 @@
             <div class="footer-section">
                 <h4>Contact Us</h4>
                 <p>Email: info@consultium.com</p>
-                <p>Phone: +233 XX XXX XXXX</p>
+                <p>Phone: +233 59 254 8849</p>
+                <p>Powered by <a href="https://smartlinkco.github.io/portfolio/public_html/index.html#" target="_blank">SmartLink</a></p>
             </div>
             <div class="footer-section">
                 <h4>Follow Us</h4>
@@ -169,6 +233,31 @@
             <p>&copy; 2024 Consultium. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Add this right after your existing modals -->
+    <div id="getStartedModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Start Your Journey with Consultium</h2>
+            <div class="get-started-options">
+                <div class="option-card">
+                    <h3>New Business License</h3>
+                    <p>Start the process for obtaining your first business license</p>
+                    <button class="enquire-btn" data-package="new-license">Select</button>
+                </div>
+                <div class="option-card">
+                    <h3>License Renewal</h3>
+                    <p>Renew your existing business licenses</p>
+                    <button class="enquire-btn" data-package="renewal">Select</button>
+                </div>
+                <div class="option-card">
+                    <h3>Consultation Only</h3>
+                    <p>Get expert advice on business licensing</p>
+                    <button class="enquire-btn" data-package="consultation">Select</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
