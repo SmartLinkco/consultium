@@ -138,4 +138,31 @@ $(document).ready(function() {
             this.closest('.modal').style.display = 'none';
         });
     });
+
+    // Theme toggling functionality
+    function initThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to 'light'
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(icon, savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(icon, newTheme);
+        });
+    }
+
+    function updateThemeIcon(icon, theme) {
+        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    // Call this function when the document is ready
+    document.addEventListener('DOMContentLoaded', initThemeToggle);
 });

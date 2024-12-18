@@ -9,6 +9,7 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
+    background-color: var(--bg-color);
 }
 
 /* Variables */
@@ -19,6 +20,19 @@ body {
     --light-gray: #f4f4f4;
     --white: #ffffff;
     --max-width: 1200px;
+    --text-color: #333;
+    --bg-color: #ffffff;
+    --card-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+    --primary-color: #4a6785;
+    --secondary-color: #61afef;
+    --accent-color: #e06c75;
+    --light-gray: #2c2c2c;
+    --text-color: #e0e0e0;
+    --bg-color: #1a1a1a;
+    --card-bg: #2c2c2c;
 }
 
 /* Navigation */
@@ -72,9 +86,9 @@ body {
 .hero {
     position: relative;
     height: 100vh;
-    background-image: url('media/building.jpeg');
+    background-image: url('media/consultium.webp');
     background-size: cover;
-    background-position: right;
+    background-position: top;
     background-attachment: fixed;
     color: white;
     display: flex;
@@ -146,10 +160,11 @@ body {
 .service-card {
     position: relative;
     padding: 2rem;
-    background: #fff;
+    background: var(--card-bg);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    color: var(--text-color);
 }
 
 .service-card:hover {
@@ -285,6 +300,7 @@ body {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: var(--text-color);
 }
 
 /* Footer */
@@ -408,7 +424,7 @@ body {
 
 .modal-content {
     position: relative;
-    background-color: #fff;
+    background-color: var(--card-bg);
     margin: 20px auto;
     padding: 2rem;
     width: 90%;
@@ -417,6 +433,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-height: 90vh;
     overflow-y: auto;
+    color: var(--text-color);
 }
 
 .close-modal {
@@ -505,4 +522,46 @@ body.modal-open {
 .option-card p {
     color: #666;
     margin-bottom: 15px;
+}
+
+/* Theme toggle button */
+.theme-toggle-fixed {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.theme-toggle-fixed:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle-fixed i {
+    font-size: 1.5rem;
+}
+
+/* Add responsive styling for mobile */
+@media (max-width: 768px) {
+    .theme-toggle-fixed {
+        bottom: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .theme-toggle-fixed i {
+        font-size: 1.2rem;
+    }
 }
