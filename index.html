@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add jQuery for enhanced functionality -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -38,10 +40,11 @@
     <section id="services" class="services">
         <h2>Our Services</h2>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card" data-service="license">
                 <i class="fas fa-file-signature"></i>
                 <h3>License Application</h3>
                 <p>Streamlined application process for various business licenses</p>
+                <button class="learn-more-btn">Learn More</button>
             </div>
             <div class="service-card">
                 <i class="fas fa-comments"></i>
@@ -55,6 +58,76 @@
             </div>
         </div>
     </section>
+
+    <!-- Service Popup Modals -->
+    <div id="licenseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>License Application Services</h2>
+            <div class="service-details">
+                <h3>Follow-up Services Include:</h3>
+                <ul>
+                    <li>Initial Assessment and Consultation</li>
+                    <li>Document Preparation and Review</li>
+                    <li>Application Submission</li>
+                    <li>Progress Tracking</li>
+                    <li>Follow-up Communications</li>
+                </ul>
+                <div class="pricing-tiers">
+                    <div class="tier">
+                        <h4>Basic Package</h4>
+                        <p>Starting from $XXX</p>
+                        <button class="enquire-btn" data-package="basic">Enquire Now</button>
+                    </div>
+                    <div class="tier">
+                        <h4>Premium Package</h4>
+                        <p>Starting from $XXX</p>
+                        <button class="enquire-btn" data-package="premium">Enquire Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enquiry Form Popup -->
+    <div id="enquiryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Service Enquiry</h2>
+            <form id="enquiryForm">
+                <input type="hidden" id="selectedPackage" name="package">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Information:</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Enquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message Popup -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h2>Thank You!</h2>
+                <p>Your enquiry has been submitted successfully. Our team will contact you within 24 hours.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Resources Section -->
     <section id="resources" class="resources">
